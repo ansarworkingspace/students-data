@@ -1,0 +1,57 @@
+.HeadermainDiv{
+    width: 100%;
+    height: 7rem;
+    /* background-color: white; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    width: 7rem;
+    height: auto;
+    margin: 1rem;
+    margin-left: 4rem;
+}
+
+.HeadermainDiv h3{
+    color: #fffffff2;
+    margin: 1rem;
+    margin-right: 7rem;
+}
+
+
+@media screen and (max-width: 768px) {
+    
+    .HeadermainDiv {
+        width: 100%;
+        height: 5rem;
+        /* background-color: black; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+
+    .logo img {
+        width: 4.5rem;
+        height: auto;
+        margin: 1rem;
+        margin-left: 2rem;
+
+
+    }
+
+  
+    .HeadermainDiv h3 {
+        color: #fffffff2;
+        margin: 1rem;
+        margin-right: 2rem;
+        font-size: 15px;
+    }
+
+
+
+
+}

@@ -1,0 +1,103 @@
+.loginMainDiv{
+    width: 100%;
+    display: flex;
+    height: 34rem;
+    flex-direction: column;
+    color: white;
+    /* background: blueviolet; */
+    align-items: center;
+}
+
+.loginMainDiv h3{
+    margin-top: 3rem;
+}
+
+/* .loginBox{
+    width: 33%;
+    display: flex;
+    height: 25rem;
+    border-radius: 1rem;
+    background-color: beige;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+} */
+
+.loginBox {
+    width: 33%;
+    display: flex;
+    height: 25rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px); 
+    /* background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.5)); */
+    background: linear-gradient(to bottom, #4b6cb7, #182848);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+  
+  
+  
+
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGroup input{
+    font-family: 'Poppins';
+    width: 24rem;
+    height: 4rem;
+    border-radius: 1rem;
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    outline: none;
+}
+
+
+
+
+.loginBox button{
+    
+        width: 8rem;
+        height: 3.5rem;
+        border: none;
+        border-radius: 1rem;
+        background: linear-gradient(to bottom, #4b6cb7, #182848);
+        color: white;
+        font-size: 1rem;
+        font-family: 'Poppins';
+        cursor: pointer;
+}
+
+
+@media screen and (max-width:768px) {
+    .loginMainDiv{
+        height: 24rem;
+        margin-top: 5rem;
+    }
+    
+    .loginBox {
+        width: 89%;
+        height: 25rem;
+        gap: 2rem;
+      }
+    
+    .inputGroup input{
+        width: 18rem;
+        height: 3rem;
+        font-size: 13px;
+    }
+
+    .loginBox button{
+        
+        width: 7rem;
+        height: 2.5rem;
+        font-size: 13px;
+      
+    }
+}
