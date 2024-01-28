@@ -152,6 +152,51 @@ const deleteData = asyncHandler(async(req,res)=>{
       }
 })
 
+const getOneStudentData = asyncHandler(async (req, res) => {
+    try {
+      const { studentId } = req.params;
+  
+      // Assuming you have a PersonalInfo model for your student data
+      const student = await PersonalInfo.findById(studentId);
+  
+      // Check if the student is found
+      if (!student) {
+        return res.status(404).json({ success: false, message: 'Student not found' });
+      }
+  
+      // Return the student data
+      res.status(200).json({ success: true, data: student });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+  });
+  
+
+  const updateStudentData = asyncHandler(async (req, res) => {
+    try {
+      const { studentId } = req.params;
+      const updatedData = req.body; // Contains the updated data
+  
+      // Assuming you have a PersonalInfo model for your student data
+      const student = await PersonalInfo.findByIdAndUpdate(studentId, updatedData, {
+        new: true, // Return the modified document rather than the original
+        runValidators: true, // Run model validation on update
+      });
+  
+      // Check if the student is found
+      if (!student) {
+        return res.status(404).json({ success: false, message: 'Student not found' });
+      }
+  
+      res.status(200).json({ success: true, message: 'Student data updated successfully', data: student });
+    } catch (error) {
+      console.error('Error updating data:', error);
+      res.status(500).json({ success: false, message: 'Internal Server Error' });
+    }
+  });
+  
+
 
 export {
     adminAuth,
@@ -160,5 +205,7 @@ export {
     uploadData,
     getData,
     changeStatus,
-    deleteData
+    deleteData,
+    getOneStudentData,
+    updateStudentData
 };

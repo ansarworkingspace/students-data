@@ -28,7 +28,7 @@
 
 .tableDiv{
     width: 90%;
-    height: 39rem;
+    min-height: 39rem;
     margin-left: 5rem;
     border-radius: 1rem;
     margin-top: 1rem;
@@ -132,3 +132,13 @@
     font-size: 12px;
     cursor: pointer;
 }
+
+.custom-header{
+    background-color: #4daa57;
+    font-family: "Poppins";
+    font-size: 13px;
+    color: white;
+    
+}
+
+

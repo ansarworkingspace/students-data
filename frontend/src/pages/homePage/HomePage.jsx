@@ -5,14 +5,14 @@ import { DataGrid } from '@mui/x-data-grid'
 import axios from 'axios';
 import './HomePage.css'
 import {toast} from 'react-toastify'
-
+import EditComponent from '../../components/editComponent/Edit'
 
 
 const HomePage = () => {
   const [rows, setRows] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-
- 
+  const [selectedStudentId, setSelectedStudentId] = useState(null);
+  const [isEditComponentVisible, setIsEditComponentVisible] = useState(false);
 
 
   const columns = [
@@ -148,6 +148,26 @@ const handleDelete = async (id)=>{
   };
 
 
+
+  const handleEdit = (id) => {
+    const studentId = rows.find((row) => row.id === id)?._id;
+
+    if (!studentId) {
+      console.error('Student ID not found');
+      return;
+    }
+
+    // Set the selected student ID
+    setSelectedStudentId(studentId);
+    setIsEditComponentVisible(true);
+  };
+
+
+
+
+  const handleEditComponentCancel = () => {
+    setIsEditComponentVisible(false);
+  };
   
   return (
     <div className='homeMain'>
@@ -160,10 +180,27 @@ const handleDelete = async (id)=>{
         <input type="text" placeholder="Search..."  value={searchInput}  onChange={(e) => setSearchInput(e.target.value)}/>
           <SearchIcon onClick={handleSearch} />
         </div>
+
+        {selectedStudentId && isEditComponentVisible && (
+        <EditComponent
+          studentId={selectedStudentId}
+          onCancel={handleEditComponentCancel}
+        />
+      )}
+
+     
+
         <div className="table">
         <DataGrid
             rows={rows}
-            columns={columns}
+            // columns={columns}
+
+            columns={columns.map((column) => ({
+              ...column,
+              headerClassName: 'custom-header', // Add a custom class for styling
+                 
+            }))}
+
             pageSize={5}
             rowsPerPageOptions={[5, 10, 20]}
             autoHeight
