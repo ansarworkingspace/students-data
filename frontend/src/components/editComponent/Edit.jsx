@@ -54,9 +54,9 @@ const Edit = ({ studentId, onCancel }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log('Before API request - studentId:', studentId);
+    
         const response = await axios.get(`http://localhost:4000/api/admin/getOneStudentData/${studentId}`);
-        console.log('After API request - response.data:', response.data);
+     
 
         setStudentData(response.data); // Store the fetched student data
       } catch (error) {
