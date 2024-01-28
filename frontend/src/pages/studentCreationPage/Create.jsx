@@ -1,28 +1,3 @@
-// import React from 'react'
-// import { Link } from 'react-router-dom';
-// import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-// import './Create.css'
-
-// const Create = () => {
-//   return (
-//     <div className='createPageMainDiv'>
-//       <div className='navigateDiv'>
-//         <Link to="/">
-//         <ArrowBackIcon style={{ marginRight: '0.5rem' }} />
-//           <h3>Home</h3>
-//         </Link>
-//       </div>
-//       <div className='formBodyMain'>
-//          <div className="one"></div>
-        
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default Create
-
-
 
 
 import React from 'react';
@@ -175,13 +150,13 @@ const Create = () => {
         </div>
         <div className='EduDetails'>
         <TextField
-            label='Enter Village'
+            label='Qualification'
             variant='outlined'
             margin='normal'
             className='thirdTextFieldEdu'
           />
           <TextField
-            label='Enter Taluk'
+            label='School/College'
             variant='outlined'
             margin='normal'
             className='thirdTextFieldEdu'
