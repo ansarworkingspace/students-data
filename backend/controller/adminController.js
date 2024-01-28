@@ -86,6 +86,19 @@ const uploadData = asyncHandler(async(req,res)=>{
     }
 })
 
+const getData = asyncHandler(async(req,res)=>{
+    try {
+        // Fetch data from the database (assuming you have a PersonalInfo model)
+        const data = await PersonalInfo.find();
+    
+        // Return the data in the response
+        res.status(200).json(data);
+      } catch (error) {
+        // Handle any errors that might occur during database query
+        console.error('Error fetching data:', error);
+        res.status(500).json({ message: 'Internal Server Error' });
+      }
+})
 
 
 
@@ -93,5 +106,6 @@ export {
     adminAuth,
     adminRegister,
     adminLogout,
-    uploadData
+    uploadData,
+    getData
 };
