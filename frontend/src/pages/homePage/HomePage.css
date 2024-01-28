@@ -95,7 +95,7 @@
     cursor: pointer;
 }
 
-.deleteBtn{
+.statusBtn{
     background: #e0624f;;
     width: 4rem;
     height: 1.6rem;
@@ -107,3 +107,15 @@
     cursor: pointer;
 }
 
+
+.unblockBtn{
+    background: #4daa57;;
+    width: 4rem;
+    height: 1.6rem;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-family: "Poppins";
+    font-size: 12px;
+    cursor: pointer;
+}

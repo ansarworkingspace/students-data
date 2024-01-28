@@ -101,11 +101,42 @@ const getData = asyncHandler(async(req,res)=>{
 })
 
 
+const changeStatus = asyncHandler(async(req,res)=>{
+    try {
+        // Assuming you have a parameter in the request, like studentId, to identify the student
+        const { studentId } = req.body;
+
+    
+        // Find the student by ID
+        const student = await PersonalInfo.findById(studentId);
+    
+        // Check if the student is found
+        if (!student) {
+          return res.status(404).json({ success: false, message: 'Student not found' });
+        }
+    
+        // Toggle the status field
+        student.status = !student.status;
+    
+        // Save the updated student
+        await student.save();
+    
+        // Return the updated status
+        res.status(200).json({ success: true, status: student.status });
+      } catch (error) {
+        // Handle errors
+        console.error('Error changing status:', error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
+      }
+})
+
+
 
 export {
     adminAuth,
     adminRegister,
     adminLogout,
     uploadData,
-    getData
+    getData,
+    changeStatus
 };

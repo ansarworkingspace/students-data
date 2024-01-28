@@ -21,10 +21,10 @@ const personalInfoSchema = new Schema({
     taluk: { type: String },
     qualification: { type: String },
     schoolCollege: { type: String },
-
     workExperience:{ type: Number, required: true }, 
     companyName: { type: String, required: true }, 
     designation: { type: String, required: true },
+    status: { type: Boolean, default: false },
 
 });
 
