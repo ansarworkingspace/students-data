@@ -41,7 +41,7 @@ const HomePage = () => {
     {
       field: 'options',
       headerName: 'Options',
-      width: 150,
+      width: 230,
       renderCell: (params) => (
         <div className='optionBtn'>
            <button
@@ -53,11 +53,38 @@ const HomePage = () => {
           <button className='editBtn' onClick={() => handleEdit(params.row.id)}>
             Edit
           </button>
+          <button className='deleteBtn' onClick={() => handleDelete(params.row.id)}>
+            Delete
+          </button>
         </div>
       ),
     },
   ];
   
+
+const handleDelete = async (id)=>{
+   try {
+    const studentId = rows.find((row) => row.id === id)?._id;
+
+    if (!studentId) {
+      console.error('Student ID not found');
+      return;
+    }
+
+    // Make an Axios request to your backend endpoint
+    const response = await axios.delete('http://localhost:4000/api/admin/deleteData', { data: { studentId } });
+    if (response.data.success) {
+      toast.success(`status changed successfuly`)
+      window.location.reload();
+    } else {
+      toast.error('Error changing status');
+    }
+
+   } catch (error) {
+    toast.error('Error changing status');
+   }
+}
+
 
 
 
@@ -112,7 +139,7 @@ const HomePage = () => {
 
         toast.success(`status changed successfuly`)
       } else {
-        console.error('Error changing status:', response.data.message);
+        toast.error('Error changing status');
       }
     } catch (error) {
       // Handle errors

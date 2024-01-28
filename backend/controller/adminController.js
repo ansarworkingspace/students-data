@@ -130,6 +130,27 @@ const changeStatus = asyncHandler(async(req,res)=>{
       }
 })
 
+const deleteData = asyncHandler(async(req,res)=>{
+    try {
+        // Assuming you have a parameter in the request, like studentId, to identify the student
+        const { studentId } = req.body;
+    
+        // Find the student by ID and remove it
+        const deletedStudent = await PersonalInfo.findByIdAndDelete(studentId);
+    
+        // Check if the student is found
+        if (!deletedStudent) {
+          return res.status(404).json({ success: false, message: 'Student not found' });
+        }
+    
+        // Return success message
+        res.status(200).json({ success: true, message: 'Student deleted successfully' });
+      } catch (error) {
+        // Handle errors
+        console.error('Error deleting student:', error);
+        res.status(500).json({ success: false, message: 'Internal Server Error' });
+      }
+})
 
 
 export {
@@ -138,5 +159,6 @@ export {
     adminLogout,
     uploadData,
     getData,
-    changeStatus
+    changeStatus,
+    deleteData
 };
