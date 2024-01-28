@@ -12,6 +12,7 @@ import {
 import './index.css';
 import HomeScreen from './pages/homePage/HomePage.jsx';
 import LoginScreen from './pages/loginPage/Login.jsx';
+import Create from './pages/studentCreationPage/Create.jsx';
 import store from './store.js';
 import { Provider } from 'react-redux';
 import PrivateRoute from './components/AdminPrivetRouter.jsx';
@@ -25,7 +26,7 @@ const router = createBrowserRouter(
 
       <Route path='/' element={<PrivateRoute />}>
         <Route index={true} element={<HomeScreen />} />
-       
+        <Route path='/create' element={<Create />} />
       </Route>
 
     </Route>

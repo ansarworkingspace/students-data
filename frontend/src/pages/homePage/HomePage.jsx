@@ -1,9 +1,11 @@
 import React from 'react'
+import './HomePage.css'
+
 
 const HomePage = () => {
   return (
-    <div>
-       <h1>homePage page</h1>
+    <div className='homeMain'>
+       <h1>homePage students table</h1>
     </div>
   )
 }
