@@ -6,6 +6,7 @@ import axios from 'axios';
 import './HomePage.css'
 
 
+
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
   { field: 'name', headerName: 'Name', width: 170 },
@@ -53,7 +54,7 @@ const columns = [
 
 const HomePage = () => {
   const [rows, setRows] = useState([]);
-
+  const [searchInput, setSearchInput] = useState('');
 
 
 
@@ -72,8 +73,19 @@ const HomePage = () => {
   }, []);
   
 
+  const handleSearch = () => {
+    // Filter rows based on the search input
+    const filteredRows = rows.filter((row) =>
+      Object.values(row).some((value) =>
+        value.toString().toLowerCase().includes(searchInput.toLowerCase())
+      )
+    );
+    setRows(filteredRows);
+  };
 
 
+  
+  
   return (
     <div className='homeMain'>
       <div className='tableMainDiv'>
@@ -82,8 +94,8 @@ const HomePage = () => {
       </div>
       <div className='tableDiv'>
         <div className="searchBar">
-        <input type="text" placeholder="Search..." />
-          <SearchIcon />
+        <input type="text" placeholder="Search..."  value={searchInput}  onChange={(e) => setSearchInput(e.target.value)}/>
+          <SearchIcon onClick={handleSearch} />
         </div>
         <div className="table">
         <DataGrid
@@ -92,6 +104,7 @@ const HomePage = () => {
             pageSize={5}
             rowsPerPageOptions={[5, 10, 20]}
             autoHeight
+           
           />
         </div>
       </div>

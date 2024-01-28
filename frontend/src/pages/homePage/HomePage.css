@@ -62,6 +62,7 @@
     font-size: 12px;
     font-family: "Poppins";
     width: 10rem;
+    outline: none;
   }
 
   .searchBar svg {
@@ -105,3 +106,4 @@
     font-size: 12px;
     cursor: pointer;
 }
+
