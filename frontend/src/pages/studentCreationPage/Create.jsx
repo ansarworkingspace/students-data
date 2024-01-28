@@ -210,6 +210,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Formik, Field, ErrorMessage, Form } from 'formik';
+import {toast} from 'react-toastify'
 import * as Yup from 'yup';
 import {
   FormControl,
@@ -220,7 +221,6 @@ import {
 } from '@mui/material';
 import './Create.css';
 import axios from 'axios'; 
-
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
@@ -241,10 +241,14 @@ const validationSchema = Yup.object().shape({
     taluk: Yup.string().required('Taluk is required'),
     qualification: Yup.string().required('Qualification is required'),
     schoolCollege: Yup.string().required('School/College is required'),
-    workExperience: Yup.string().required('Work Experience is required'),
+    workExperience: Yup.number().required('Work Experience is required'),
     companyName: Yup.string().required('Company Name is required'),
     designation: Yup.string().required('Designation is required'),
+    
+      
+
   });
+  
   
 
 
@@ -258,17 +262,18 @@ const Create = () => {
     const handleSubmit = async (values) => {
         try {
           // Send data to the backend API using Axios
-          const response = await axios.post('/uploadData', values);
+          const response = await axios.post('http://localhost:4000/api/admin/uploadData', values);
     
           // Handle success
-          console.log('Data uploaded successfully:', response.data);
+          toast.success('Data uploaded successfully');
+          handleCancel()
         } catch (error) {
           // Handle error
           console.error('Error uploading data:', error);
         }
       };
 
-      
+
       const handleCancel = () => {
         // Reload the page
         window.location.reload();

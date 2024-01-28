@@ -1,7 +1,8 @@
 import asyncHandler from 'express-async-handler';
 import admin from '../schema/adminBasicModel.js';
 import generateAdminToken from '../utils/generateToken.js'
-
+import PersonalInfo from '../schema/studentFormModel.js'
+import validateData from '../utils/validation.js'
 
 const adminAuth = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
@@ -63,7 +64,26 @@ const adminLogout = (req, res) => {
 //form controller
 
 const uploadData = asyncHandler(async(req,res)=>{
-     
+    const data = req.body;
+
+    // Validate the data
+    const validationErrors = await validateData(data);
+  
+    if (validationErrors) {
+      return res.status(400).json({ errors: validationErrors });
+    }
+  
+    // If validation passes, save the data to the database
+    try {
+      const newRecord = new PersonalInfo(data);
+      await newRecord.save();
+  
+      // Send success response
+      return res.status(200).json({ message: 'Data saved successfully' });
+    } catch (error) {
+      console.error('Error saving data to the database:', error);
+      return res.status(500).json({ message: 'Internal Server Error' });
+    }
 })
 
 
