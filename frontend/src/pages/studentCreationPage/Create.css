@@ -35,7 +35,7 @@
 
 .formBodyMain{
     width: 90%;
-    height: 39rem;
+    min-height: 39rem;
     margin-left: 5rem;
     border-radius: 1rem;
     margin-top: 1rem;
@@ -151,6 +151,7 @@
 .options{
     display: flex;
     gap: 2rem;
+    margin-bottom:2rem;
 }
 
 .cancelBtn{
@@ -176,6 +177,16 @@
     font-family: "Poppins";
     cursor: pointer;
 }
+
+
+
+.error {
+    color: red; 
+    font-size: 0.7em; 
+    margin-top: 4px; 
+    font-family: "Poppins";
+  }
+
 
 @media screen and (max-width:768px) {
  

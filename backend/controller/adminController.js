@@ -60,9 +60,18 @@ const adminLogout = (req, res) => {
     res.status(200).json({message:'admin logged out'});
 };
 
+//form controller
+
+const uploadData = asyncHandler(async(req,res)=>{
+     
+})
+
+
+
 
 export {
     adminAuth,
     adminRegister,
     adminLogout,
+    uploadData
 };
